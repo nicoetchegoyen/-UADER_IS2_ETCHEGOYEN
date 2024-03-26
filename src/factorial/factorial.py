@@ -20,10 +20,25 @@ def factorial(num):
         return fact 
 
 if len(sys.argv) == 1:
-    rango = input("Ingrese el rango desde-hasta: ").split('-')
-    desde, hasta = int(rango[0]), int(rango[1])
+    rango = input("Ingrese el rango (sin límite inferior -hasta o sin límite superior desde-): ")
+    if rango.startswith("-"):
+        hasta = int(rango[1:])
+        desde = 1
+    elif rango.endswith("-"):
+        desde = int(rango[:-1])
+        hasta = 60
+    else:
+        desde, hasta = map(int, rango.split('-'))
 else:
-    desde, hasta = map(int, sys.argv[1].split('-'))
+    rango = sys.argv[1]
+    if rango.startswith("-"):
+        hasta = int(rango[1:])
+        desde = 1
+    elif rango.endswith("-"):
+        desde = int(rango[:-1])
+        hasta = 60
+    else:
+        desde, hasta = map(int, rango.split('-'))
 
 for num in range(desde, hasta + 1):
     print("Factorial", num, "! es", factorial(num))
