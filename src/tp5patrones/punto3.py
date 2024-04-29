@@ -57,7 +57,7 @@ class IDObserver(Observer):
 
 
 if __name__ == "__main__":
-    os.system("clear")
+    os.system("cls")
 
     print("crea los observadores para IDs específicos\n")
     observer1 = IDObserver('ASDF')
